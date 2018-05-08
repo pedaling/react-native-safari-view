@@ -74,7 +74,7 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)args resolver:(RCTPromiseResolveBlock)res
 
     // get the view controller closest to the foreground
     UIViewController *ctrl = RCTPresentedViewController();
-    
+
     // Display the Safari View
     [ctrl presentViewController:self.safariView animated:YES completion:nil];
 
@@ -103,6 +103,7 @@ RCT_EXPORT_METHOD(dismiss)
 -(void)safariViewControllerDidFinish:(nonnull SFSafariViewController *)controller
 {
     [controller dismissViewControllerAnimated:true completion:nil];
+    self.safariView = nil;
     NSLog(@"[SafariView] SafariView dismissed.");
 
     if (hasListeners) {
