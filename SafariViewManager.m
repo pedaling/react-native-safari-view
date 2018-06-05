@@ -39,6 +39,10 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)args resolver:(RCTPromiseResolveBlock)res
         return;
     }
 
+    if (self.safariView) {
+      return;
+    }
+
     NSURL *url = [NSURL URLWithString:args[@"url"]];
     BOOL readerMode = [args[@"readerMode"] boolValue];
     UIColor *tintColorString = args[@"tintColor"];
