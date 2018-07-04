@@ -40,7 +40,8 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)args resolver:(RCTPromiseResolveBlock)res
     }
 
     if (self.safariView) {
-      return;
+        reject(@"E_SAFARI_VIEW_IS_INITIALIZED", @"사파리 뷰가 이미 존재합니다.", nil);
+        return;
     }
 
     NSURL *url = [NSURL URLWithString:args[@"url"]];
